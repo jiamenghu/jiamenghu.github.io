@@ -14,7 +14,7 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="title: pytorch学习笔记（一） pytorch笔记 基于python的科学计算软件包Pytorch和TensorFlow的区别：    TensorFlow是基于静态计算图的，静态计算图是先定义后运行，一次定义多次运行（Tensorflow 2.0也开始使用动态计算图）   PyTorch是基于动态图的，是在运行的过程中被定义的，在运行的时候构建，可以多次构建多次运行    基础入门张">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-10-07T12:26:29.120Z">
+<meta property="og:updated_time" content="2019-10-07T13:01:39.635Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo">
 <meta name="twitter:description" content="title: pytorch学习笔记（一） pytorch笔记 基于python的科学计算软件包Pytorch和TensorFlow的区别：    TensorFlow是基于静态计算图的，静态计算图是先定义后运行，一次定义多次运行（Tensorflow 2.0也开始使用动态计算图）   PyTorch是基于动态图的，是在运行的过程中被定义的，在运行的时候构建，可以多次构建多次运行    基础入门张">
@@ -224,7 +224,7 @@ True
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(x.grad)</span><br></pre></td></tr></table></figure>
 
 <pre><code>tensor([[4.5000, 4.5000],
-        [4.5000, 4.5000]])</code></pre><p>$out = \frac{1}{4}\sum_i z_i$，其中$z_i = 3(x_i+2)^2$，因为方向传播中torch.tensor=1（out.backward中的参数）因此$z_i\bigr\rvert_{x_i=1} = 27$</p>
+        [4.5000, 4.5000]])</code></pre><p>$$ out = \frac{1}{4}\sum_i z_i$$，其中$z_i = 3(x_i+2)^2$，因为方向传播中torch.tensor=1（out.backward中的参数）因此$z_i\bigr\rvert_{x_i=1} = 27$</p>
 <p>对于梯度$\frac{\partial out}{\partial x_i} = \frac{3}{2}(x_i+2)$，把$x_i=1$代入$\frac{\partial out}{\partial x_i}\bigr\rvert_{x_i=1} = \frac{9}{2} = 4.5$</p>
 <p>对标量进行backward(),不需要参数。下面看下是向量或矩阵时，gradient参数的值对梯度的影响：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">x=torch.randn(<span class="number">3</span>,requires_grad=<span class="literal">True</span>)</span><br><span class="line">print(x)</span><br><span class="line">y=x*<span class="number">2</span></span><br><span class="line"><span class="keyword">while</span> y.data.norm()&lt;<span class="number">1000</span>:</span><br><span class="line">    y=y*<span class="number">2</span></span><br><span class="line"><span class="comment">#print(y)</span></span><br><span class="line">gradients = torch.tensor([<span class="number">0.1</span>,<span class="number">1.0</span>,<span class="number">0.0001</span>],dtype=torch.float)</span><br><span class="line">y.backward(gradient=gradients)</span><br><span class="line">print(x.grad)</span><br></pre></td></tr></table></figure>
@@ -239,7 +239,7 @@ False</code></pre>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/10/07/pytorch学习笔记/" data-id="ck1ge4bo40002ecvbfkrvfnro" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/10/07/pytorch学习笔记/" data-id="ck1gffqze0002kwvbgaqyx00z" class="article-share-link">Share</a>
       
       
     </footer>
